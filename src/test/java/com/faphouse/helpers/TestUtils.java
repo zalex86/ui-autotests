@@ -15,6 +15,10 @@ public interface TestUtils {
         return response.then().statusCode(statusCode).extract().response();
     }
 
+    static String getRandomStringWithNumbers(int upperRange) {
+        return RandomStringUtils.randomAlphanumeric(upperRange);
+    }
+
     static String getRandomString(int length) {
         return RandomStringUtils.randomAlphabetic(length).toLowerCase();
     }
