@@ -1,8 +1,9 @@
-package com.faphouse.page;
+package com.faphouse.page.fapHouse.accountWizard;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.faphouse.BaseSetup;
 import com.faphouse.helpers.PageObjectUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -10,8 +11,8 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.faphouse.helpers.TestUtils.getRandomString;
 
-public class AccountWizardStepOnePage {
-    private static final String PAGE_URL = "https://studio.faphouse.com/account/wizard/step/one";
+public class StepOnePage {
+    private static final String PAGE_URL = BaseSetup.SERVER + "account/wizard/step/one";
 
     public final SelenideElement businessTypeButton = $(".value-business");
     public final SelenideElement producerNameInput = $("input[data-testid='field-element-producerName']");
@@ -23,7 +24,7 @@ public class AccountWizardStepOnePage {
     public final SelenideElement registrationNumberInput = $("input[data-testid='field-element-registrationNumber']");
     public final SelenideElement addressCountryInput = $("input[data-testid='field-element-addressCountryCode']");
     public final SelenideElement countriesListDropdown = $(".field-select__dropdown");
-    public final By countryItem = By.cssSelector("button");
+    public final By countryListItem = By.cssSelector("button");
     public final SelenideElement addressCityInput = $("input[data-testid='field-element-addressCity']");
     public final SelenideElement addressRegionInput = $("input[data-testid='field-element-addressRegion']");
     public final SelenideElement addressPostInput = $("input[data-testid='field-element-addressPostCode']");
@@ -31,19 +32,19 @@ public class AccountWizardStepOnePage {
     public final SelenideElement custodianRecordsInput = $("textarea[data-testid='field-element-custodianOfRecordsAddress']");
     public final SelenideElement nextButton = $("button[data-testid='wizard-business-form-submit-btn']");
 
-    public AccountWizardStepOnePage() {
+    public StepOnePage() {
         PageObjectUtils.waitPageIsPresentByURL(PAGE_URL);
     }
 
     @Step("Choose the business account type")
-    public AccountWizardStepOnePage chooseBusinessAccountType() {
+    public StepOnePage chooseBusinessAccountType() {
         businessTypeButton.shouldBe(Condition.visible).click();
         return this;
     }
 
     @Step("Fill all required fields")
-    public AccountWizardStepOnePage fillAllRequiredFields() {
-        String randomString = getRandomString(3);
+    public StepOnePage fillAllRequiredFields() {
+        String randomString = getRandomString(8);
         producerNameInput.shouldBe(Condition.visible).sendKeys(randomString);
         contactFirstnameInput.sendKeys(randomString);
         contactLastnameInput.sendKeys(randomString);
@@ -53,7 +54,7 @@ public class AccountWizardStepOnePage {
         registrationNumberInput.sendKeys(randomString);
         countriesListDropdown.shouldNotBe(Condition.visible);
         addressCountryInput.sendKeys("usa");
-        countriesListDropdown.shouldBe(Condition.visible).$$(countryItem).shouldHave(CollectionCondition.size(1)).get(0)
+        countriesListDropdown.shouldBe(Condition.visible).$$(countryListItem).shouldHave(CollectionCondition.size(1)).get(0)
                 .click();
         addressCityInput.sendKeys(randomString);
         addressRegionInput.sendKeys(randomString);

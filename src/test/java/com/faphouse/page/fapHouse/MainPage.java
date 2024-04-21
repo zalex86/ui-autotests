@@ -1,14 +1,15 @@
-package com.faphouse.page;
+package com.faphouse.page.fapHouse;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.faphouse.BaseSetup;
 import com.faphouse.helpers.PageObjectUtils;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage {
-    private static final String PAGE_URL = "https://studio.faphouse.com/";
+    private static final String PAGE_URL = BaseSetup.SERVER;
 
     public final SelenideElement emailInput = $("div[data-el-name='E-mail'] input");
     public final SelenideElement usernameInput = $("div[data-el-name='Username'] input");
