@@ -12,10 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -29,7 +26,6 @@ public class BaseSetup {
     public static HashMap<String, String> USER_CREDENTIALS;
     public static String USER_EMAIL;
     public static String USER_PASSWORD;
-    public static ConcurrentMap<String, Map<String, String>> apiCookieTokens = new ConcurrentHashMap<>();
 
     @BeforeSuite
     public void setupServer() throws IOException {
@@ -68,6 +64,5 @@ public class BaseSetup {
 
         USER_EMAIL = properties.getProperty("userEmail");
         USER_PASSWORD = properties.getProperty("userPassword");
-
     }
 }

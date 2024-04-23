@@ -45,23 +45,20 @@ public final class DriverFactory {
 
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefsMap);
-//        options.addExtensions(new File("src/test/resources/configuration/Trust-Wallet.crx"));
         options.addArguments("--test-type");
         options.addArguments("--disable-extensions");
         options.addArguments("disable-infobars");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
-        //options.addArguments("--lang=ru-RU");
-        //Timed out receiving message from renderer
+
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-password-manager");
         options.addArguments("start-maximized");
-//        options.addArguments("--remote-allow-origins=*");
-//        WebDriverManager.chromedriver().setup();
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        //show browser window during tests
+        //show browser window during tests for grid
 //        capabilities.setCapability("enableVNC", true);
-        //enable video recording during tests
+        //enable video recording during tests for grid
 //        capabilities.setCapability("enableVideo", false);
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         return capabilities;
@@ -88,9 +85,9 @@ public final class DriverFactory {
         options.addArguments("--disable-password-manager");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        //show browser window during tests
-        capabilities.setCapability("enableVNC", true);
-        //enable video recording during tests
+        //show browser window during tests for grid
+//        capabilities.setCapability("enableVNC", true);
+        //enable video recording during tests for grid
 //        capabilities.setCapability("enableVideo", false);
         capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
         return capabilities;
