@@ -4,12 +4,12 @@
 
     <test name="test thread 1">
         <classes>
-
+            <class name="com.faphouse.tests.RegistrationTests"/>
         </classes>
     </test>
     <test name="test thread 2">
         <classes>
-
+            <class name="com.faphouse.tests.RegistrationTests"/>
         </classes>
     </test>
 </suite>
